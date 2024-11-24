@@ -2,6 +2,7 @@ package com.example.games_app.uis.tictactoe
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
@@ -28,55 +29,62 @@ import androidx.compose.ui.unit.sp
 import com.example.games_app.constants.TicTacToeNavConst
 import com.example.games_app.ui.theme.NavyBlue
 
+
 @Composable
 fun HomeScree(modifier: Modifier = Modifier, onClick:(moveToPath:String)->Unit) {
-    Column (
-        modifier
-            .fillMaxSize(),
-        horizontalAlignment = Alignment.CenterHorizontally,
-    ) {
-        val offset = Offset(0.5f,10.0f)
-        val gradientColor = listOf(Cyan, Blue, Magenta)
-        Row (
-            Modifier.padding(top=55.dp)
-        ){
-            Text(
-                text = " TIC \n TAC \n TOE", style = TextStyle(
-                    fontSize = 100.sp,
-                    shadow = Shadow(
-                        Color.Red,
-                        offset=offset,
-                        blurRadius = 15f
-                    ),
-                    brush = Brush.linearGradient(
-                        colors = gradientColor
-                    )
-                ),
+    Box (
+        modifier.fillMaxSize(),
+        contentAlignment = Alignment.Center,
 
-                )
-        }
-
-        Column(
-            Modifier
-                .fillMaxWidth()
-                .padding(top=20.dp),
+    ){
+        Column (
             horizontalAlignment = Alignment.CenterHorizontally,
-            verticalArrangement = Arrangement.Center,
         ) {
-            Button(
-                onClick = { onClick(TicTacToeNavConst.ComputerTicTacToePathConst.navPath)}
-            ) {
-                Text(text = "Play With Computer")
+            val offset = Offset(0.5f,10.0f)
+            val gradientColor = listOf(Cyan, Blue, Magenta)
+            Row (
+                Modifier.padding(top=55.dp)
+            ){
+                Text(
+                    text = " TIC TAC  TOE", style = TextStyle(
+                        fontSize = 50.sp,
+                        shadow = Shadow(
+                            Color.Red,
+                            offset=offset,
+                            blurRadius = 15f
+                        ),
+                        brush = Brush.linearGradient(
+                            colors = gradientColor
+                        )
+                    ),
+
+                    )
             }
 
-            Button(
-                onClick = { onClick(TicTacToeNavConst.FriendTicTacToePathConst.navPath)}
+            Column(
+                Modifier
+                    .fillMaxWidth()
+                    .padding(top = 20.dp),
+                horizontalAlignment = Alignment.CenterHorizontally,
+                verticalArrangement = Arrangement.Center,
             ) {
-                Text(text = "Play With Friend")
+                Button(
+                    onClick = { onClick(TicTacToeNavConst.ComputerTicTacToePathConst.navPath)}
+                ) {
+                    Text(text = "Play With Computer")
+                }
+
+                Button(
+                    onClick = { onClick(TicTacToeNavConst.FriendTicTacToePathConst.navPath)}
+                ) {
+                    Text(text = "Play With Friend")
+                }
             }
+
         }
 
     }
+
 
 }
 

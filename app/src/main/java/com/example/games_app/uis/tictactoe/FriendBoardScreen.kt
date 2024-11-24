@@ -20,9 +20,9 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import com.example.games_app.MainActivity
-import com.example.games_app.logic.GameLogic
+import com.example.games_app.logic.TicTacToeGameLogic
 import com.example.games_app.constants.GameStatus
+import com.example.games_app.uis.tictactoe.datasource.TicTacToeGameData
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
@@ -30,7 +30,7 @@ fun FriendGameView(context: Context) {
     var friendPressed=false
 
     var gameData by remember {
-        mutableStateOf(MainActivity.data.map { it.toMutableList() }.toMutableList())
+        mutableStateOf(TicTacToeGameData.data.map { it.toMutableList() }.toMutableList())
     }
 
     Scaffold(
@@ -52,9 +52,9 @@ fun FriendGameView(context: Context) {
                 mutableStateOf(GameStatus.GAME_START.toString())
             }
             GameBoardUI(boardData = gameData) { row, col ->
-                gameData= GameLogic.insertDataFriendsGame(gameData,row,col,friendPressed)
+                gameData= TicTacToeGameLogic.insertDataFriendsGame(gameData,row,col,friendPressed)
                 friendPressed = !friendPressed
-                val gameState= GameLogic.findWinnerInGame(gameData)
+                val gameState= TicTacToeGameLogic.findWinnerInGame(gameData)
                 text = gameState.toString()
             }
             Text(
@@ -67,7 +67,7 @@ fun FriendGameView(context: Context) {
                 .padding(10.dp)
                 .align(Alignment.CenterHorizontally),
                 onClick = {
-                    gameData = GameLogic.resetGameData().map { it.toMutableList() }.toMutableList()
+                    gameData = TicTacToeGameLogic.resetGameData().map { it.toMutableList() }.toMutableList()
                 })
             {
                 Text(text = "RESTART GAME" )

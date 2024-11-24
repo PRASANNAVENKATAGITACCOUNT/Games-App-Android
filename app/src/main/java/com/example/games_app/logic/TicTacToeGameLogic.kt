@@ -4,7 +4,7 @@ import android.util.Log
 import com.example.games_app.constants.GameStatus
 
 
-class GameLogic {
+class TicTacToeGameLogic {
 
     companion object{
         fun insertDataComputerGame(gameData:MutableList<MutableList<String>>, row:Int,col:Int) : MutableList<MutableList<String>> {

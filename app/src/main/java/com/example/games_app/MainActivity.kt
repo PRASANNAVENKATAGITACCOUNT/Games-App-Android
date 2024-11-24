@@ -9,27 +9,19 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.tooling.preview.Preview
 
 import com.example.games_app.ui.theme.TicTacToeAppTheme
+import com.example.games_app.uis.login.LoginScreen
 import com.example.games_app.uis.tictactoe.NavigationOfTicTacToeGame
 
 
 class MainActivity : ComponentActivity() {
-  companion object{
-
-      //tic tac toe game data
-      val data = listOf(
-          mutableListOf(" "," "," "),
-          mutableListOf(" "," "," "),
-          mutableListOf(" "," "," ")
-      )
-  }
-
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContent {
             TicTacToeAppTheme {
-               NavigationOfTicTacToeGame(context = this)
+                LoginScreen()
+               //NavigationOfTicTacToeGame(context = this)
             }
         }
     }
